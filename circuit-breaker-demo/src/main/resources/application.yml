@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: circuit-breaker-demo
+  cloud:
+    circuitbreaker:
+      resilience4j:
+        enabled: true
+        instances:
+          myCircuitBreaker:
+            registerHealthIndicator: true
+            configuration:
+              timeoutDuration: 1000ms
+              slidingWindowSize: 100
+              failureRateThreshold: 50
+              waitDurationInOpenState: 60000ms
